@@ -9,7 +9,15 @@ body {
                 padding-bottom: 20px;
             }
 
-            
+.jumbotron  {
+	background: url("/img/cover-photo.jpeg") no-repeat fixed center;
+	height: 600px;
+	background-size: cover;
+	color: #ffffff;
+	text-shadow: 1px 1px #000000;
+	text-align: center;
+
+}          
 
 
 
