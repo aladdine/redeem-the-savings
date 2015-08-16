@@ -125,9 +125,13 @@
 		<h2>3- Redeem:</h2>
 		<div id="total-points"><h3 class='output'>Total points earned: 0 points</h3></div>
 		<div><h3 class='output'>Eligible Awards: <span id="award"> number of points is too low. </span></h3></div>
+		<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">What's your email address to send you the reward?</span>
+				  <input type="email" class="form-control email" id="email" placeholder="email@example.com" aria-describedby="basic-addon1">
 		</div>
-		<input type='button' id='calculate_points' class='btn btn-info' value='Redeem Points'>
-		<input type='button' id='calculate_points' class='btn btn-info' value='Donate My Savings'>
+		</div>
+		<input type='button' id='redeem_points' class='btn btn-info' value='Redeem Points'>
+		<input type='button' id='donate_points' class='btn btn-info' value='Donate My Savings'>
 	</div>
 </div>
 
@@ -340,6 +344,17 @@ $(".add_points").change(function(){
     
 
  });
+
+$("#redeem_points").click(function(){
+
+       alert("Thank you! We will send the reward to your email!");
+});
+
+$("#donate_points").click(function(){
+
+	   alert("Thank you! We will donate the equivalent of your earned points to a non-profit in the form of bill credit!");
+
+});
 
 
 </script>
