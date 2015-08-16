@@ -10,21 +10,31 @@
 	<div class="row">
 		<div class="col-md-12">
 
-		<h2>1- Upload Bill:</h2>
+		<h2>1- Upload Bills:</h2>
 		
 
 		<form id="air_tickets_form">
   
 		  <div class="form-group">
 		    <p><input type="hidden" name="apikey" value="e1c97619-b755-4fb0-8fec-e06d8594962e"></p>
-		   
+		    <label for="air_tickets">Upload The After Saving Bill:</label>
 		    <input class="col-md-3" type="file" id="air_tickets" name="file">
-		    <input class="col-md-3" type="file" id="air_tickets_1" name="file">
 		    <span><input  class="btn-primary" type="submit"></span>
-		  </div>
-	</form>
+		  </div>	  
+	   </form>
+
+	     <form id="air_tickets_form_2">
+  
+		  <div class="form-group-2">
+		    <p><input type="hidden" name="apikey" value="e1c97619-b755-4fb0-8fec-e06d8594962e"></p>
+		    <label for="air_tickets_2">Upload The After Saving Bill:</label>
+		    <input class="col-md-3" type="file" id="air_tickets_2" name="file">
+		    <span><input  class="btn-primary" type="submit"></span>
+		  </div>	  
+	   </form>
 
           <div id="this-month-consumption"></div>
+          <div id="this-month-consumption-2"></div>
 
 
 
@@ -75,8 +85,49 @@
  
 		//grab all form data  
 		var formData = new FormData($(this)[0]);
-        var formData2 = new FormData($(this)[1]);
+        
+  $.ajax({
+    url: 'https://api.idolondemand.com/1/api/sync/extracttext/v1',
+    type: 'POST',
+    data: formData,
+    async: false,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (data) {
+        
+        console.log(data.document[0].content);
 
+
+        bill_content = data.document[0].content;
+
+        check_bill = bill_content.search("CALIFORNIA AMERICAN WATER");
+        if (check_bill < 0) {
+
+         $("#this-month-consumption").html("<div class='alert alert-danger' role='alert'>Please upload a valid California American Water bill.</div>");	
+
+        } else {
+
+        this_month_consumption = bill_content.match(/ gallons\) Total Water Use Comparison/g);
+        consumption = bill_content.indexOf(this_month_consumption[0]);
+        consumption = bill_content.substring(consumption - 5, consumption);
+        consumption = Number(consumption.replace(",",""));       
+        console.log("cb: " + check_bill);
+        $("#this-month-consumption").html("<h4>Monthly consumption before saving: " + consumption + " gallons</h4>");
+        }
+    }
+  });
+
+});
+
+ $("form#air_tickets_form_2").submit(function(event){
+ 
+	   //disable the default form submission
+		event.preventDefault();
+ 
+		//grab all form data  
+		var formData = new FormData($(this)[0]);
+        
   $.ajax({
     url: 'https://api.idolondemand.com/1/api/sync/extracttext/v1',
     type: 'POST',
@@ -89,28 +140,25 @@
     
         console.log(data.document[0].content);
         bill_content = data.document[0].content;
+
+        check_bill = bill_content.search("CALIFORNIA AMERICAN WATER");
+        if (check_bill < 0) {
+
+         $("#this-month-consumption-2").html("<div class='alert alert-danger' role='alert'>Please upload a valid California American Water bill.</div>");	
+
+        } else {
+
         this_month_consumption = bill_content.match(/ gallons\) Total Water Use Comparison/g);
         consumption = bill_content.indexOf(this_month_consumption[0]);
         consumption = bill_content.substring(consumption - 5, consumption);
         consumption = Number(consumption.replace(",",""));       
         console.log(consumption);
-        $("#this-month-consumption").html("<h4>This month consumption: " + consumption + " gallons</h4>");
+
+        $("#this-month-consumption-2").html("<h4>Monthly consumption after saving: " + consumption + " gallons</h4>");
+    	}
+
     }
   });
 
-      $.ajax({
-    url: 'https://api.idolondemand.com/1/api/sync/extracttext/v1',
-    type: 'POST',
-    data: formData2,
-    async: false,
-    cache: false,
-    contentType: false,
-    processData: false,
-    success: function (data) {
-    
-        console.log(data.document[1].content);
-        
-    }
-  });
 });
 </script>

@@ -25,7 +25,7 @@
 	  <div class="panel-body">
 	    If this month's water consumption is 30% less than last month's, $100 of your next water bill will be offset. 
 	  </div>
-	  <div class="panel-footer">Eligibility: California American Water customers </div>
+	  <div class="panel-footer"><b>Eligibility:</b> California American Water customers </div>
 	  <div class="panel-footer"><b>Sponsored by:</b> California American Water. </div>
 	</div>
 
@@ -36,7 +36,7 @@
 	  <div class="panel-body">
 	    If this month's water consumption is 2,000 gallons less than the same month of last year, you can win a MacBook Air. 
 	  </div>
-	  <div class="panel-footer">Eligibility: California American Water customers </div>
+	  <div class="panel-footer"><b>Eligibility:</b> California American Water customers </div>
 	  <div class="panel-footer"><b>Sponsored by:</b> California American Water. </div>
 	</div>
 
