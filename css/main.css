@@ -17,6 +17,30 @@ body {
 	text-shadow: 1px 1px #000000;
 	text-align: center;
 
+}  
+
+.jumbotron-water-rewards  {
+	background: url("/img/cover-image-water-rewards.jpeg") no-repeat fixed center;
+	height: 200px;
+	background-size: cover;
+	color: #ffffff;
+	text-shadow: 1px 1px #000000;
+	text-align: center;
+	padding-top: 50px;
+	margin-bottom: 50px; 
+
+}  
+
+.jumbotron-electricity-rewards  {
+	background: url("/img/cover-image-electricity-rewards.jpeg") no-repeat fixed center;
+	height: 200px;
+	background-size: cover;
+	color: #ffffff;
+	text-shadow: 1px 1px #000000;
+	text-align: center;
+	padding-top: 50px;
+	margin-bottom: 50px; 
+
 }      
 
 #jumbotron-water-start, #jumbotron-electricity-start  {
@@ -29,6 +53,19 @@ body {
    .learn-more  {
 	text-align: center;
 }  
+
+.panel-heading {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.join-program {
+	float: right;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
    
 
 /* ==========================================================================

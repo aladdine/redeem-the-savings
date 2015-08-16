@@ -17,6 +17,7 @@
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="js/main.js">
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -31,18 +32,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Redeem My Savings</a>
+          <a class="navbar-brand" href="/">Redeem My Savings</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="/water-rewards.php">Browse Water Rewards</a></li>
+        <li><a href="/electricity-rewards.php">Browse Electricity Rewards</a></li>
+        </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
