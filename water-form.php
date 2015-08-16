@@ -56,56 +56,61 @@
            <div class="col-md-6">
            		<div class="input-group">
 				  <span class="input-group-addon" id="basic-addon1">How many people live in this property?</span>
-				  <input type="number" id="people_in_the _property" class="form-control" placeholder="example 5" aria-describedby="basic-addon1">
+				  <input type="number" id="people-in-the-property" class="form-control add_points" value="0" aria-describedby="basic-addon1">
 				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Added Points: <span id="people-in-the-property-points">0</span></span>
+				</div>
+
 
 				<div class="input-group">
 				  <span class="input-group-addon" id="basic-addon1">How many hours did you water the lawn for achieving these savings?</span>
-				  <input type="text" class="form-control" placeholder="example 5" aria-describedby="basic-addon1">
+				  <input type="number" class="form-control add_points" id="watering-lawn-in-the-property" placeholder="0" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Added Points: <span id="watering-lawn-in-the-property-points">0</span></span>
 				</div>
 
-				<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">How many bedrooms are in this property?</span>
-				  <input type="number" class="form-control" placeholder="example 5" aria-describedby="basic-addon1">
-				</div>
+				
                 
-				<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">How many bathrooms in this property?</span>
-				  <input type="number" class="form-control" placeholder="example 3" aria-describedby="basic-addon1">
-				</div>
+				
 
 				<div class="form-group">
 				  <label for="sel1">Did you use/do any of these to achieve savings?</label>
-				  <select class="form-control" id="sel1" multiple>
+				  <select class="form-control add_points" id="actions-in-the-property">
 				    <option value="5">Efficient shower head</option>
 				    <option value="10">Recycling water from the sink</option>
 				    <option value="15">Less then 5 laundry loads per month </option>
 				    <option value="20">Got the pipes checked for leakage </option>
 				  </select>
 				</div>
+
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Added Points: <span id="actions-in-the-property-points">0</span></span>
+				</div>
            </div>	
 
             <div class="col-md-6">
            		<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">Added Points:</span>
-				  <input type="text" class="form-control" id="people_in_the _property_points" value="0 points" aria-describedby="basic-addon1" readonly>
+				  <span class="input-group-addon" id="basic-addon1">How many bedrooms are in this property?</span>
+				  <input type="number" class="form-control add_points" id="bedrooms-in-the-property" placeholder="0" aria-describedby="basic-addon1">
 				</div>
+				
 				<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">Added Points:</span>
-				  <input type="text" class="form-control" value="0 points" aria-describedby="basic-addon1" readonly>
+				  <span class="input-group-addon" id="basic-addon1">Added Points: <span id="bedrooms-in-the-property-points">0</span></span>
 				</div>
+
 				<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">Points earned</span>
-				  <input type="text" class="form-control" value="0 points" aria-describedby="basic-addon1" readonly>
+				  <span class="input-group-addon" id="basic-addon1">How many bathrooms in this property?</span>
+				  <input type="number" class="form-control add_points" id="bathrooms-in-the-property" placeholder="0" aria-describedby="basic-addon1">
 				</div>
+
 				<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">Points earned</span>
-				  <input type="text" class="form-control" value="0 points" aria-describedby="basic-addon1" readonly>
+				  <span class="input-group-addon" id="basic-addon1">Added Points: <span id="bathrooms-in-the-property-points">0</span></span>
 				</div>
-				<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">Points earned</span>
-				  <input type="text" class="form-control" value="0 points" aria-describedby="basic-addon1" readonly>
-				</div>
+				
+
+				
 				
 
 
@@ -118,8 +123,11 @@
 	<div class="row">
 		<div class="col-md-12">
 		<h2>3- Redeem:</h2>
-		<div id="total-points"><p class='output'>Total points earned: 0 points</p></div>
+		<div id="total-points"><h3 class='output'>Total points earned: 0 points</h3></div>
+		<div><h3 class='output'>Eligible Awards: <span id="award"> number of points is too low. </span></h3></div>
 		</div>
+		<input type='button' id='calculate_points' class='btn btn-info' value='Redeem Points'>
+		<input type='button' id='calculate_points' class='btn btn-info' value='Donate My Savings'>
 	</div>
 </div>
 
@@ -128,6 +136,7 @@
 
 
 <script>
+ var points = 0;
  $("form#air_tickets_form_2").submit(function(event){
  
 	   //disable the default form submission
@@ -222,13 +231,43 @@
         
         savings_gallons = consumption_before - consumption_after;
 
-        savings_percent = savings_gallons / consumption_before * 100; 
+
+
+        savings_percent = Math.floor(savings_gallons / consumption_before * 100); 
+
+
+
+
 
          $("#water-savings").html("<p class='output'>Your month to month savings are: " + savings_gallons + " gallons (" + savings_percent + "%)</p>");
 	         if (savings_percent >= 0) {
                  points = savings_percent * 2 + 20;
-              //   id="people_in_the _property"
-                $("#total-points").html("<p class='output'>Total points earned: " + points + " points</p>");
+
+                       award = "number of points too low";
+
+				        if (points > 30 && points < 100 ) {
+
+				        	award = "$20 Amazon gift card";
+
+				        }
+
+				        if (points >= 100 && points < 200 ) {
+
+				        	award = "MacBook Air";
+
+				        }
+
+				        if (points >= 200) {
+
+				        	award = "$100 off your next water bill";
+
+				        }
+
+                $("#total-points").html("<h2 class='output'>Total points earned: " + points + " points</h2>");
+
+                 $("#award").html(award);
+
+               
                 
 	         }
     	}
@@ -237,6 +276,70 @@
   });
 
 });
+
+$(".add_points").change(function(){
+
+	    if (points <= 0) {
+
+	    $("#total-points").html("<p class='output'>Sorry. Only after uploading bills that show savings, you will be able to earn points.</p>");
+
+	    } else {
+
+        people_in_the_property_points = Number($("#people-in-the-property").val()) * 4;
+
+        bedrooms_in_the_property_points = Number($("#bedrooms-in-the-property").val()) * 4;
+
+        bathrooms_in_the_property_points = Number($("#bathrooms-in-the-property").val()) * 4;
+
+      
+        watering_lawn_in_the_property_points = Number($("#watering-lawn-in-the-property").val()) * 0.1;
+  
+
+       
+
+        actions_in_the_property_points = Number($("#actions-in-the-property").val()) * (-0.5);
+
+        points += people_in_the_property_points + bedrooms_in_the_property_points + bathrooms_in_the_property_points + watering_lawn_in_the_property_points + actions_in_the_property_points;
+
+         award = "number of points too low";
+
+        if (points > 30 && points < 100 ) {
+
+        	award = "$20 Amazon gift card";
+
+        }
+
+        if (points >= 100 && points < 200 ) {
+
+        	award = "MacBook Air";
+
+        }
+
+        if (points >= 200) {
+
+        	award = "$100 off your next water bill";
+
+        }
+
+         $("#people-in-the-property-points").html(people_in_the_property_points + " points");
+
+         $("#bedrooms-in-the-property-points").html(bedrooms_in_the_property_points + " points");
+
+         $("#bathrooms-in-the-property-points").html(bathrooms_in_the_property_points + " points");
+
+         $("#watering-lawn-in-the-property-points").html(watering_lawn_in_the_property_points + " points");
+
+         $("#actions-in-the-property-points").html(actions_in_the_property_points + " points");
+
+
+         $("#total-points").html("<h3 class='output'>Total points earned: " + points + " points</h3>");
+
+         $("#award").html(award);
+
+         }
+    
+
+ });
 
 
 </script>

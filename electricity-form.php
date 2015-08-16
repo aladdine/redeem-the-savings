@@ -75,6 +75,8 @@
         consumption = bill_content.indexOf(this_month_consumption[0]);
         consumption = bill_content.substring(consumption - 5, consumption);
         consumption = Number(consumption.replace(",",""));
+
+        
         
         console.log(consumption);
         $("#this-month-consumption").html("<h4>This month consumption: " + consumption + " gallons</h4>");
