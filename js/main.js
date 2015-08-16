@@ -1,9 +1,9 @@
 
 $( document ).ready(function() {
 
-	$("#jumbotron-water-start").attr("href", "water-rewards.php");
+	$("#jumbotron-water-start").attr("href", "water-form.php");
 
-	$("#jumbotron-electricity-start").attr("href", "electricity-rewards.php");
+	$("#jumbotron-electricity-start").attr("href", "electricity-form.php");
 
 
 

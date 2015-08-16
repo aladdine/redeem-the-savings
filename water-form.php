@@ -19,6 +19,7 @@
 		    <p><input type="hidden" name="apikey" value="e1c97619-b755-4fb0-8fec-e06d8594962e"></p>
 		   
 		    <input class="col-md-3" type="file" id="air_tickets" name="file">
+		    <input class="col-md-3" type="file" id="air_tickets_1" name="file">
 		    <span><input  class="btn-primary" type="submit"></span>
 		  </div>
 	</form>
@@ -74,6 +75,7 @@
  
 		//grab all form data  
 		var formData = new FormData($(this)[0]);
+        var formData2 = new FormData($(this)[1]);
 
   $.ajax({
     url: 'https://api.idolondemand.com/1/api/sync/extracttext/v1',
@@ -86,20 +88,28 @@
     success: function (data) {
     
         console.log(data.document[0].content);
-          
-
-
         bill_content = data.document[0].content;
         this_month_consumption = bill_content.match(/ gallons\) Total Water Use Comparison/g);
         consumption = bill_content.indexOf(this_month_consumption[0]);
         consumption = bill_content.substring(consumption - 5, consumption);
-        consumption = Number(consumption.replace(",",""));
-        
+        consumption = Number(consumption.replace(",",""));       
         console.log(consumption);
         $("#this-month-consumption").html("<h4>This month consumption: " + consumption + " gallons</h4>");
-      
+    }
+  });
 
-
+      $.ajax({
+    url: 'https://api.idolondemand.com/1/api/sync/extracttext/v1',
+    type: 'POST',
+    data: formData2,
+    async: false,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (data) {
+    
+        console.log(data.document[1].content);
+        
     }
   });
 });
