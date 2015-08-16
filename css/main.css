@@ -10,26 +10,43 @@ body {
             }
 
 .jumbotron  {
-	background: url("/img/cover-photo.jpeg") no-repeat fixed center;
+	background: url("/img/cover-image.jpeg") no-repeat fixed center;
 	height: 600px;
 	background-size: cover;
 	color: #ffffff;
 	text-shadow: 1px 1px #000000;
 	text-align: center;
 
-}          
+}      
 
+#jumbotron-water-start, #jumbotron-electricity-start  {
+	margin: 20px;
+}  
+   .learn-more-header {
+   	font-style: italic;
+   }    
 
+   .learn-more  {
+	text-align: center;
+}  
+   
 
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 
+@media (max-width: 600px) {
+  .jumbotron  {
+	background: url("/img/cover-image-xs.jpeg") no-repeat fixed center;
+	height: 300px;
+	background-size: cover;
+}  
 
+   h1 {
+   	font-size: 24px;
+   }
 
-
-
-
-
-
-
-
-
-
+   h2 {
+   	font-size: 20px;
+   }
+}
