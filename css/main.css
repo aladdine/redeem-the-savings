@@ -71,7 +71,22 @@ body {
 	margin-top: 20px;
 	font-weight: bold;
 }
-   
+
+.input-group {
+	margin-bottom: 20px;
+}
+
+.after-savings-bill-upload {
+	display: none;
+}   
+
+.savings-display {
+	display: none;
+}
+
+input[type=file] {
+	margin-right: 30px;
+}
 
 /* ==========================================================================
    Responsive
