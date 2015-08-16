@@ -66,6 +66,10 @@ body {
 .navbar-brand {
 	font-weight: bold;
 }
+
+.output {
+	font-weight: bold;
+}
    
 
 /* ==========================================================================
