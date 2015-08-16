@@ -36,8 +36,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="/water-rewards.php">Browse Water Rewards</a></li>
-        <li><a href="/electricity-rewards.php">Browse Electricity Rewards</a></li>
+        <li><a href="/water-rewards.php">Water Rewards</a></li>
+        <li><a href="/electricity-rewards.php">Electricity Rewards</a></li>
+        <li><a href="/sponsors.php">Become a Sponsor</a></li>
         </ul>
         </div><!--/.navbar-collapse -->
       </div>
